@@ -11,23 +11,35 @@
 </head>
 <body>
 <div id="shopping-list">
-    <h1 id="title">{{message.toLocaleUpperCase() || 'Welcome'}}</h1>
-    <div class="add-item-form">
-        <input @keyup.enter="items.push({id: items.length + 1, label: newItem})" id="new-item" type="text" placeholder="Add an item..." v-model="newItem">
+<div class="header">
+    <h1 id="title">{{message || 'Welcome'}}</h1>
+    <button v-if="editing" @click='doEdit(false)' class="btn-cancel">Cancel</button>
+    <button v-else @click="doEdit(true)" class="btn-primary">Add Item</button>
+</div>
+
+    <div v-if="editing" class="add-item-form">
+        <input @keyup.enter="saveItem" id="new-item" type="text" placeholder="Add an item..." v-model="newItem">
+        <p class="counter">{{charCount}}/200</p>
         <button class="btn-primary"
-                @click="items.push({id: items.length + 1, label: newItem})">
+                v-bind:disabled="newItem.length < 0"
+                @click="saveItem">
             Save Item
         </button>
         <br>
         <label>
-            High Priority
             <input type="checkbox" v-model="newItemPriority">
+            High Priority
         </label>
     </div>
+    <p v-if="items.length === 0">Good job. You've bought everything on the list</p>
     <ul>
-     <li class="list" v-for="item in items" :key="item.id">{{item.label}}</li>
+     <li class="list" v-for="item in reversedItems" :key="item.id"
+         @click="togglePurchased(item)"
+         :class="{strikeout: item.purchased, priority: item.highPriority}"
+     >{{item.label}}</li>
  </ul>
 </div>
+
 <script src="main.js"></script>
 </body>
 </html>

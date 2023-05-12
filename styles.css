@@ -6,10 +6,21 @@
     border-color: dodgerblue;
 }
 
+.btn-cancel{
+    padding: 3px;
+    border-radius: 4px;
+    color: white;
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    margin-bottom: 5px;
+}
+
 #new-item{
 border-color: dodgerblue;
     margin-right: 5px;
     border-radius: 3px;
+    padding: 10px;
+    width: 40%;
 }
 
 #title{
@@ -24,4 +35,17 @@ body{
     font-size: large;
     padding-bottom: 15px;
     border-bottom-color: dodgerblue;
+}
+
+.strikeout {
+    text-decoration: line-through;
+    color: #b8c2cc;
+}
+
+.strikeout:hover {
+    color: #8795a1;
+}
+
+.priority {
+    color: #de751f;
 }
