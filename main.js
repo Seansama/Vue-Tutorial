@@ -5,12 +5,7 @@ data(){
         editing: false,
         newItem: '',
         newItemPriority: false,
-        items: [
-
-            {id: 1, label: '10 party hats', purchased: true, highPriority: true},
-     {id: 2, label: 'A jug of milk', purchased: true, highPriority: false},
-     {id: 3, label: 'A house', purchased: false, highPriority: true}
-        ]
+        items: []
     }
 },
     computed:{
